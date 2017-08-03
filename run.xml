@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Custom Suite" parallel="none">
+  <listeners>
+    <listener class-name="com.appiumdemo.listeners.TestListener"></listener>
+    <listener class-name="com.appiumdemo.listeners.RetryListener"></listener>
+  </listeners>
+  <test verbose="1" name="Appium_Test" annotations="JDK">
+    <classes>
+      <class name="com.appiumdemo.testcases.login.Login1"/>
+    </classes>
+  </test>
+</suite>

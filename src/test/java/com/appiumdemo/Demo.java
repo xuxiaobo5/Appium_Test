@@ -1,41 +1,19 @@
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
+package com.appiumdemo;
+
+import com.appiumdemo.basic.BasicTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.net.URL;
 import java.util.List;
 
 /**
  * Created by XUXIAOBO_17 on 2017/7/16.
  */
 
-public class Demo {
-
-    private  AppiumDriver<WebElement> driver;
-
-    @BeforeMethod
-    public void setUp() throws Exception {
-        File classpathRoot = new File(System.getProperty("user.dir"));
-        File app = new File(classpathRoot,"apk/test.apk");
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName","Android Emulator");
-        capabilities.setCapability("app",app.getAbsoluteFile());
-        capabilities.setCapability("appActivity","com.netease.nr.biz.ad.AdActivity");
-        capabilities.setCapability("unicodeKeyboard",true);
-        capabilities.setCapability("restKeyboard",true);
-        capabilities.setCapability("noReset",true);
-        capabilities.setCapability("sessionOverride",true);
-        driver = new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-    }
+public class Demo extends BasicTest {
 
     @Test
     public void testDemo() throws Exception {
@@ -45,7 +23,7 @@ public class Demo {
 //        driver.findElement(By.id("com.netease.newsreader.activity:id/be3")).click();
 //        WebElement searchET = driver.findElement(By.id("com.netease.newsreader.activity:id/aev"));
 //        searchET.sendKeys("234508021@qq.com");
-//        Thread.sleep(5000);
+//         Thread.sleep(5000);
 
         //列表的操作
         List<WebElement> elements = driver.findElements(By.id("com.netease.newsreader.activity:id/du"));
@@ -80,8 +58,4 @@ public class Demo {
 //        Thread.sleep(5000);
     }
 
-    @AfterMethod
-    public void tearDown() throws Exception {
-        driver.quit();
-    }
 }
